@@ -1,0 +1,3 @@
+content		alloyui		chrome/content/ xpcnativewrappers=no
+
+overlay		chrome://firebug/content/firebugOverlay.xul		chrome://alloyui/content/alloyui.xul

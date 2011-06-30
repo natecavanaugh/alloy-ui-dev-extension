@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<RDF:RDF xmlns:em="http://www.mozilla.org/2004/em-rdf#"
+         xmlns:NC="http://home.netscape.com/NC-rdf#"
+         xmlns:RDF="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <RDF:Description RDF:about="rdf:#$41y0G2"
+                   em:id="{ec8030f7-c20a-464f-9b0e-13a3a9e97384}"
+                   em:minVersion="1"
+                   em:maxVersion="10.*" />
+  <RDF:Description RDF:about="urn:mozilla:install-manifest"
+                   em:id="ncavanaugh@liferay.com"
+                   em:name="AlloyUI"
+                   em:version="1.0"
+                   em:creator="Nate Cavanaugh; http://alloy.liferay.com"
+                   em:description="AlloyUI Firebug extension"
+                   em:homepageURL="http://alloy.liferay.com/aui-fbx"
+                   em:iconURL="chrome://alloyui/content/icon.png">
+    <em:targetApplication RDF:resource="rdf:#$41y0G2"/>
+  </RDF:Description>
+</RDF:RDF>
