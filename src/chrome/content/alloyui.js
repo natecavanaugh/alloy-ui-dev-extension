@@ -85,6 +85,7 @@ FBL.ns(
 
 						var length = array.length;
 						var lastIndex = length - 1;
+						var bracketClose, bracketOpen;
 
 						for (var i = 0; i < length; ++i) {
 							var value = array[i];
@@ -95,8 +96,17 @@ FBL.ns(
 
 							var delim = (i == lastIndex) ? '' : ', ';
 
+							bracketClose = bracketOpen = '';
+
+							if (value && value.nodeType == 1) {
+								bracketOpen = '<';
+								bracketClose = '>';
+							}
+
 							items.push(
 								{
+									bracketClose: bracketClose,
+									bracketOpen: bracketOpen,
 									delim: delim,
 									object: value,
 									tag: tag
@@ -122,7 +132,7 @@ FBL.ns(
 			);
 
 			Firebug.alloyuiModel.NodeElement = domplate(
-				FirebugReps.Element,
+				Firebug.alloyuiModel.NodeExpression,
 				{
 					shortTag: SPAN(
 						OBJECTLINK(
@@ -181,28 +191,34 @@ FBL.ns(
 							},
 							'('
 						),
-						NODELINK(
-							'&lt;',
+						FOR(
+							'item',
+							'$object._node|nodeIterator',
 							SPAN(
 								{
-									'class': 'nodeTag'
+									'class': 'bracketOpen'
 								},
-								'$object._node.localName|toLowerCase'
+								'$item.bracketOpen'
 							),
-							FOR(
-								'attr',
-								'$object._node|attrIterator',
-								'&nbsp;$attr.localName=&quot;',
-								SPAN(
-									{
-										'class': 'nodeValue'
-									},
-									'$attr.nodeValue'
-								),
-								'&quot;'
+							TAG(
+								'$item.tag',
+								{
+									object: '$item.object'
+								}
 							),
-							'&gt;'
-						 ),
+							SPAN(
+								{
+									'class': 'bracketClose'
+								},
+								'$item.bracketClose'
+							),
+							SPAN(
+								{
+									'class': 'arrayComma'
+								},
+								'$item.delim'
+							)
+						),
 						SPAN(
 							{
 								'class': 'arrayRightBracket'
@@ -211,28 +227,8 @@ FBL.ns(
 						)
 					),
 
-					dataIterator: function(object) {
-						var retVal = [];
-
-						var cache = object && object._data;
-
-						if (cache) {
-							for (var i in cache) {
-								if (cache.hasOwnProperty(i)) {
-									var value = cache[i];
-
-									var rep = Firebug.getRep(value);
-
-									var tag = rep.shortTag || rep.tag;
-
-									retVal.push(
-										dataDescriptor(i, value, tag)
-									);
-								}
-							}
-						}
-
-						return retVal;
+					nodeIterator: function(array) {
+						return this.arrayIterator([array]);
 					},
 
 					onDataClick: function(event) {
