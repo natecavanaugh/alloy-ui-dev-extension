@@ -1,7 +1,45 @@
 FBL.ns(
 	function() {
 		with (FBL) {
-			Firebug.alloyuiModel = extend(Firebug.Module, {});
+			Firebug.alloyuiModel = extend(
+				Firebug.Module,
+				{
+					loadedContext: function(context) {
+						var instance = this;
+
+						try {
+							var checkerCode = "\
+							var time = function() {\
+								return +(new Date);\
+							};\
+							var now = time();\
+							var check = function() {\
+								var halt = false;\
+								try {\
+									if (window.AUI) {\
+										halt = true;\
+										if (!window.A && window.AUI) {\
+											window.A = window.AUI();\
+										}\
+									}\
+								}\
+								catch (e) {\
+								}\
+								if ((time() - now) > 60000) {\
+									halt = true;\
+								}\
+								if (halt) {\
+									clearInterval(intervalId);\
+								}\
+							};\
+							var intervalId = setInterval(check, 100);";
+							Firebug.CommandLine.evaluateInWebPage(checkerCode, context, context.browser.contentWindow);
+						}
+						catch (e) {
+						}
+					}
+				}
+			);
 
 			var NODELINK = this.NODELINK = A(
 				{
