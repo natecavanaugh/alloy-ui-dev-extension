@@ -172,48 +172,6 @@ FBL.ns(
 			Firebug.alloyuiModel.NodeElement = domplate(
 				Firebug.alloyuiModel.NodeExpression,
 				{
-					shortTag: SPAN(
-						OBJECTLINK(
-							SPAN(
-								{
-									'class': '$object|getVisible'
-								},
-								SPAN(
-									{
-										'class': 'selectorTag'
-									},
-									'$object|getSelectorTag'
-								),
-								SPAN(
-									{
-										'class': 'selectorId'
-									},
-									'$object|getSelectorId'
-								),
-								SPAN(
-									{
-										'class': 'selectorClass'
-									},
-									'$object|getSelectorClass'
-								),
-								SPAN(
-									{
-										'class': 'selectorValue'
-									},
-									'$object|getValue'
-								)
-							)
-						 ),
-						 A(
-						 	{
-						 		'class': 'objectLink objectLink-aui-data',
-								onclick: '$onDataClick',
-								_objData: '$object'
-						 	},
-							'&#9993;'
-						 )
-					),
-
 					tag: OBJECTBOX(
 						{},
 						A(
