@@ -1,4 +1,4 @@
 # AlloyUI Devtools Extension for Chrome
 
 ## Instructions
-Download the alloyui.crx file and drag it into Chrome. At the bottom in the area where the dowloads are usually placed, you'll get a prompt asking to install the plugin. Press Continue, and away you go. Just go to a page with AUI or YUI on it, and you're all set.
+Download the alloyui.crx file and in Chrome, go to Window > Extensions. Drag the crx file into the window, and it should present you with a prompt asking if you'd like to install. Press Continue, and you should be good to go :)
