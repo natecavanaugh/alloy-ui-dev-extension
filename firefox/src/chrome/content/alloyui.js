@@ -16,10 +16,11 @@ FBL.ns(
 							var check = function() {\
 								var halt = false;\
 								try {\
-									if (window.AUI) {\
+									var AUI = window.AUI || window.YUI;\
+									if (AUI) {\
 										halt = true;\
-										if (!window.A && window.AUI) {\
-											window.A = window.AUI();\
+										if (!window.A && AUI) {\
+											window.A = AUI().use('aui-base');\
 										}\
 									}\
 								}\

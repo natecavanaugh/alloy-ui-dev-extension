@@ -9,7 +9,7 @@
   <RDF:Description RDF:about="urn:mozilla:install-manifest"
                    em:id="ncavanaugh@liferay.com"
                    em:name="AlloyUI"
-                   em:version="1.0.1"
+                   em:version="1.0.2"
                    em:creator="Nate Cavanaugh; http://alloy.liferay.com"
                    em:description="AlloyUI Firebug extension"
                    em:homepageURL="http://alloy.liferay.com/aui-fbx"
