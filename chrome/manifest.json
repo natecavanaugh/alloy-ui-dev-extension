@@ -18,6 +18,6 @@
 	],
 
 	"permissions": [
-		"experimental", "tabs", "http://*/*", "https://*/*"
+		"tabs", "http://*/*", "https://*/*"
 	]
 }
